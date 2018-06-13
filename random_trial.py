@@ -1,3 +1,4 @@
+from __future__ import print_function
 from rmsd import kabsch_rmsd
 import chain
 import numpy as np
@@ -95,5 +96,5 @@ if __name__ == '__main__':
         rmsds.append(rmsd)
 
     with open('results_{:03d}.txt'.format(run_id), 'w') as outfile:
-        print >>outfile, residues
-        print >>outfile, rmsds
+        print (residues, file=outfile)
+        print (rmsds, file=outfile)
