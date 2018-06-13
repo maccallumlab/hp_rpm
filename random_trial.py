@@ -3,7 +3,7 @@ import chain
 import numpy as np
 import sys
 import random
-from matplotlib import pyplot as pp
+import os
 
 
 def create_ensemble(n_res):
@@ -33,8 +33,10 @@ def compute_pairwise_rmsd(confs):
 
 def get_contacts(sequence, label_pos):
     n = len(sequence)
-    conf_file = 'conf/hp{length}/{sequence}.conf'.format(
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    file_name = 'conf/hp{length}/{sequence}.conf'.format(
         length=n, sequence=sequence)
+    conf_file = os.path.join(dir_path, file_name)
     conf = np.array(eval(open(conf_file).read()))
     contacts = []
     for i in range(len(conf)):
